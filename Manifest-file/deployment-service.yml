@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: tetris
-        image: intvish/tetrisv1:12
+        image: intvish/tetrisv1:13
         ports:
         - containerPort: 3000
 ---
