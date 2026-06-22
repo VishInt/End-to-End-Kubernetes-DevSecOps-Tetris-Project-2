@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout from Git') {
             steps {
-                git branch: 'master', url: 'https://github.com/AmanPathak-DevOps/End-to-End-Kubernetes-DevSecOps-Tetris-Project.git'
+                git branch: 'main', url: 'https://github.com/VishInt/End-to-End-Kubernetes-DevSecOps-Tetris-Project-2.git'
             }
         }
         stage('Initializing Terraform') {
@@ -40,6 +40,7 @@ pipeline {
                 withAWS(credentials: 'aws-key', region: 'us-east-1') {
                 dir('EKS-TF') {
                     script {
+                        sh 'cp variables.tfvars.example variables.tfvars'
                         sh "terraform plan -var-file=${params.'File-Name'}"
                     }
                 }
